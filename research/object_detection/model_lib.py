@@ -804,8 +804,8 @@ def create_train_and_eval_specs(train_input_fn,
                                 train_steps,
                                 num_eval_steps=None,
                                 eval_on_train_data=False,
-                                eval_throttle_secs, # evaluate every N seconds
-                                eval_start_delay_secs, # start evaluating after N seconds
+                                eval_throttle_secs=600, # evaluate every N seconds
+                                eval_start_delay_secs=120, # start evaluating after N seconds
                                 final_exporter_name='Servo',
                                 eval_spec_names=None):
   """Creates a `TrainSpec` and `EvalSpec`s.
