@@ -47,9 +47,9 @@ def main(_argv):
     # 270
     img.rotate(270).resize( (FLAGS.resizeWidth, FLAGS.resizeHeight) ).save(image_name+'_270' + '.' + FLAGS.imageExt)
     # Horizontal flip
-    im.transpose(PIL.Image.FLIP_LEFT_RIGHT).resize( (FLAGS.resizeWidth, FLAGS.resizeHeight) ).save(image_name+'_HF' + '.' + FLAGS.imageExt)
+    img.transpose(Image.FLIP_LEFT_RIGHT).resize( (FLAGS.resizeWidth, FLAGS.resizeHeight) ).save(image_name+'_HF' + '.' + FLAGS.imageExt)
     # Vertical flip
-    im.transpose(PIL.Image.FLIP_TOP_BOTTOM).resize( (FLAGS.resizeWidth, FLAGS.resizeHeight) ).save(image_name+'_VF' + '.' + FLAGS.imageExt)
+    img.transpose(Image.FLIP_TOP_BOTTOM).resize( (FLAGS.resizeWidth, FLAGS.resizeHeight) ).save(image_name+'_VF' + '.' + FLAGS.imageExt)
     
     # Resize and close original
     img.resize( (FLAGS.resizeWidth, FLAGS.resizeHeight) ).save(image)
