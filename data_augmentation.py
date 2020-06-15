@@ -46,10 +46,13 @@ def main(_argv):
     img.rotate(180).resize( (FLAGS.resizeWidth, FLAGS.resizeHeight) ).save(image_name+'_180' + '.' + FLAGS.imageExt)
     # 270
     img.rotate(270).resize( (FLAGS.resizeWidth, FLAGS.resizeHeight) ).save(image_name+'_270' + '.' + FLAGS.imageExt)
-    # close the image
+    # Horizontal flip
+    im.transpose(PIL.Image.FLIP_LEFT_RIGHT).resize( (FLAGS.resizeWidth, FLAGS.resizeHeight) ).save(image_name+'_HF' + '.' + FLAGS.imageExt)
+    # Vertical flip
+    im.transpose(PIL.Image.FLIP_TOP_BOTTOM).resize( (FLAGS.resizeWidth, FLAGS.resizeHeight) ).save(image_name+'_VF' + '.' + FLAGS.imageExt)
     
+    # Resize and close original
     img.resize( (FLAGS.resizeWidth, FLAGS.resizeHeight) ).save(image)
-    
     img.close()
 
 if __name__ == '__main__':
