@@ -34,7 +34,7 @@ def main(_argv):
     logging.info('Working on: ' + image)
         
     img = Image.open(image)
-    img.resize( (FLAGS.resizeWidth, FLAGS.resizeHeight), Image.ANTIALIAS ).save(image, quality=100)
+    img.resize( (FLAGS.resizeWidth, FLAGS.resizeHeight), Image.ANTIALIAS ).save(image, quality=95)
     img.close()
 
 if __name__ == '__main__':
