@@ -54,16 +54,16 @@ def main(_argv):
     dir = os.getcwd()
   else:
     dir = FLAGS.dir
+
+  if dir.endswith(str(os.path.sep)):
+      dir = dir[0:-1]
     
   for image in os.listdir(dir):
   
     if(not image.endswith(FLAGS.imageExt)):
         continue
         
-    if dir.endswith(str(os.path.sep)) :
-        image = dir + image
-    else:
-        image = dir + os.path.sep + image
+    image = dir + os.path.sep + image
     
     image_name_length = len(image)
     # + 1 per includere il punto
@@ -111,7 +111,7 @@ def main(_argv):
                 bndbox.find('xmax').text, bndbox.find('ymin').text = rotatePoint(angle, xmax, ymin, img_width, img_height)
 
         img.rotate(360-int(angle)).save(image_name+ '_' + str(angle) + '.' + FLAGS.imageExt, quality=95)
-        tree.write(original_filename[0:-(len(file_ext)+1)] + '_' + str(angle) + '.xml', encoding='utf-8')
+        tree.write(dir + os.path.sep + original_filename[0:-(len(file_ext)+1)] + '_' + str(angle) + '.xml', encoding='utf-8')
     
     # Horizontal flip
     # Vertical flip
@@ -152,10 +152,10 @@ def main(_argv):
                     bndbox.find('ymin').text = str( int(img_height) - int(ymin) )
 
         if flip == 'HF':
-            tree.write(original_filename[0:-(len(file_ext)+1)] + '_HF.xml', encoding='utf-8')
+            tree.write(dir + os.path.sep + original_filename[0:-(len(file_ext)+1)] + '_HF.xml', encoding='utf-8')
             img.transpose(Image.FLIP_LEFT_RIGHT).save(image_name+'_HF' + '.' + FLAGS.imageExt, quality=95)
         elif flip == 'VF':
-            tree.write(original_filename[0:-(len(file_ext)+1)] + '_VF.xml', encoding='utf-8')
+            tree.write(dir + os.path.sep + original_filename[0:-(len(file_ext)+1)] + '_VF.xml', encoding='utf-8')
             img.transpose(Image.FLIP_TOP_BOTTOM).save(image_name+'_VF' + '.' + FLAGS.imageExt, quality=95)
 
     # Close original
